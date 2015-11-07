@@ -14,37 +14,37 @@ var camera = new THREE.PerspectiveCamera(
 )
 
 function resize() {
-  
+
   var width = window.innerWidth
   var height = window.innerHeight
-  
+
   renderer.setPixelRatio( window.devicePixelRatio )
   renderer.setSize( width, height )
-  
+
   camera.aspect = width / height
   camera.updateProjectionMatrix()
-  
+
 }
 
 function render() {
-  
+
   // Time delta for camera controls
   var delta = clock.getDelta()
-  
+
   window.requestAnimationFrame( render )
   renderer.render( scene, camera )
   // controls.update( delta )
-  
+
 }
 
 window.addEventListener( 'resize', resize )
 window.addEventListener( 'DOMContentLoaded', function() {
-  
+
   document.querySelector( 'main' )
     .appendChild( renderer.domElement )
-  
+
   setupScene()
   resize()
   render()
-  
+
 })
