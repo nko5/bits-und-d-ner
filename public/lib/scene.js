@@ -29,7 +29,7 @@ function setupScene() {
   sunLight.castShadow = true
   sunLight.position.z = 1000
 
-  var ambientLight = new THREE.AmbientLight( 0x101010 )
+  var ambientLight = new THREE.AmbientLight( 0x1A1A1A )
 
   scene.add( sunLight )
   scene.add( ambientLight )
