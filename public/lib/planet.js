@@ -18,7 +18,7 @@ function createPlanet( options ) {
     var atmo = new THREE.Mesh(
       new THREE.SphereGeometry( options.radius * 1.2, options.x, options.y ),
       new THREE.MeshPhongMaterial({
-        color: new THREE.Color( 'white' ),
+        color: new THREE.Color( '#AAEEFF' ),
         shading: THREE.FlatShading
       })
     )
