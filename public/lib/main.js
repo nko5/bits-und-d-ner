@@ -13,6 +13,8 @@ var camera = new THREE.PerspectiveCamera(
   FOV, window.innerWidth / window.innerHeight, NEAR, FAR
 )
 
+var controls = new THREE.OrbitControls(camera)
+
 function resize() {
 
   var width = window.innerWidth
