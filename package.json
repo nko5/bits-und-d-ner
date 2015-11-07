@@ -11,5 +11,4 @@
     "start": "node app.js",
     "postinstall": "node scripts/postinstall.js"
   }
-
 }
