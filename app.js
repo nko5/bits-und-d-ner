@@ -1,10 +1,7 @@
 var express = require( 'express' )
 var app = express()
 
-//Create a static file server
-app.configure( function() {
-  app.use( express.static( __dirname + '/public' ) )
-})
+app.use( express.static( __dirname + '/public' ) )
 
 var port = 8080
 
