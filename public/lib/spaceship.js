@@ -26,8 +26,8 @@ function addCamera() {
 
   mesh.add( spaceshipCamera )
 
-  spaceshipCamera.position.z = -10
-  spaceshipCamera.position.y = 3
+  spaceshipCamera.position.z = -20
+  spaceshipCamera.position.y = 12
   spaceshipCamera.lookAt( mesh.position )
 
   if (!DEBUG) {
