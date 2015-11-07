@@ -6,7 +6,7 @@ var NEAR = 0.1
 var FOV = 70
 
 var renderer = new THREE.WebGLRenderer({})
-renderer.setClearColor(new THREE.Color('lightblue'), 1)
+// renderer.setClearColor(new THREE.Color('lightblue'), 1)
 
 var clock = new THREE.Clock()
 var scene = new THREE.Scene()

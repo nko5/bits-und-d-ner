@@ -33,7 +33,7 @@ function createPlanet( options ) {
     if( options.clouds ) {
 
       var cloud = null
-      // debugger
+
       for( var i = 0; i < 20; i++ ) {
         cloud = createCloud()
         cloud.position.x *= options.radius * 1.1
@@ -56,7 +56,7 @@ function createPlanet( options ) {
 
 function createSphere( radius, x, y ) {
 
-  var cloud = new THREE.Mesh(
+  var sphere = new THREE.Mesh(
     new THREE.SphereGeometry( radius, x, y ),
     new THREE.MeshPhongMaterial({
       color: new THREE.Color( 'white' ),
@@ -64,10 +64,59 @@ function createSphere( radius, x, y ) {
     })
   )
 
-  cloud.receiveShadow = true
-  cloud.castShadow = true
+  sphere.receiveShadow = true
+  sphere.castShadow = true
 
-  return cloud
+  return sphere
+
+}
+
+function createStar() {
+
+  var x = Math.random() - 0.5, y = Math.random() - 0.5, z = Math.random() - 0.5
+  var k = Math.sqrt( x * x + y * y + z * z )
+
+  while ( k < 0.2 || k > 0.3 ) {
+    x = Math.random() - 0.5
+    y = Math.random() - 0.5
+    z = Math.random() - 0.5
+    k = Math.sqrt( x * x + y * y + z * z )
+  }
+
+  var r = 10
+
+  var star = createSphere( r, 2, 2 )
+
+  star.material = createStar.material
+
+  star.receiveShadow = false
+  star.castShadow = false
+
+  star.position.x = x / k
+  star.position.y = y / k
+  star.position.z = z / k
+
+  return star
+
+}
+
+createStar.material = new THREE.MeshBasicMaterial({
+  color: new THREE.Color( 'yellow' )
+})
+
+function createSky() {
+
+  var sky = new THREE.Group()
+
+  for( var i = 0; i < 100; i++ ) {
+    star = createStar()
+    star.position.x *= 10000
+    star.position.y *= 10000
+    star.position.z *= 10000
+    sky.add( star )
+  }
+
+  return sky
 
 }
 

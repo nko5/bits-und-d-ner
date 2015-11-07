@@ -1,5 +1,6 @@
 function setupScene() {
 
+  var sky = createSky()
   var planet = createPlanet({
     atmosphere: true,
     clouds: true,
@@ -9,6 +10,7 @@ function setupScene() {
     color: new THREE.Color( '#55BB55' )
   })
 
+  scene.add( sky )
   scene.add( planet )
 
   // Lighting
