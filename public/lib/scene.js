@@ -21,12 +21,12 @@ function setupScene() {
   scene.add( sky )
   scene.add( planet )
 
-  // Lighting
-  var sunLight = new THREE.DirectionalLight()
+  var sunLight = new THREE.PointLight()
+  sunLight.name = 'sunlight'
   sunLight.castShadow = true
-  sunLight.position.z = 100
+  sunLight.position.z = 1000
 
-  var ambientLight = new THREE.AmbientLight( 0x404040 )
+  var ambientLight = new THREE.AmbientLight( 0x101010 )
 
   scene.add( sunLight )
   scene.add( ambientLight )
@@ -46,13 +46,13 @@ function setupScene() {
   // Helpers
   if( DEBUG ) {
 
-    var gridHelper = new THREE.GridHelper( 10000, 100 )
+    var gridHelper = new THREE.GridHelper( 1000, 100 )
     gridHelper.material.opacity = 0.3
     gridHelper.material.transparent = true
 
     scene.add( gridHelper )
 
-    var axisHelper = new THREE.AxisHelper( 10000 )
+    var axisHelper = new THREE.AxisHelper( 1000 )
     scene.add( axisHelper )
 
   }
