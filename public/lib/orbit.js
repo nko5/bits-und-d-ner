@@ -1,51 +1,59 @@
 /**
- * Orbit
- * @return {Orbit}
+ * OrbitHelper
+ * @return {OrbitHelper}
  */
-function Orbit() {
+function OrbitHelper( orbit ) {
 
-  if( !(this instanceof Orbit) )
-    return new Orbit()
+  if( !(this instanceof OrbitHelper) )
+    return new OrbitHelper()
 
   THREE.Group.call( this )
 
-  this.apoapsis = 100
-  this.periapsis = 100
+  this.name = 'orbitHelper'
+
+  this.orbit = orbit
 
   this.resolution = 640
   this.color = new THREE.Color( 'magenta' )
 
-  this.ellipse = new THREE.EllipseCurve(
-    0, 0,
-    this.apoapsis,
-    this.periapsis,
-    0, 2 * Math.PI
-  )
-
-  this.ellipsePath = new THREE.Path(
-    this.ellipse.getPoints( this.resolution )
-  )
-
   this.track = new THREE.Line(
-    this.ellipsePath.createPointsGeometry( this.resolution ),
+    new THREE.BoxGeometry(),
     new THREE.LineBasicMaterial({ color: this.color })
   )
 
   this.track.name = 'track'
   this.track.rotation.x = Math.PI / 2
 
+  this.calculateTrack()
   this.add( this.track )
 
 }
 
 /**
- * Orbit prototype
+ * OrbitHelper prototype
  * @type {Object}
  */
-Orbit.prototype = {
+OrbitHelper.prototype = {
 
-  constructor: Orbit,
+  constructor: OrbitHelper,
+
+  calculateTrack: function() {
+
+    var ellipse = new THREE.EllipseCurve(
+      0, 0,
+      this.orbit.apoapsis,
+      this.orbit.periapsis,
+      0, 2 * Math.PI
+    )
+
+    var ellipsePath = new THREE.Path(
+      ellipse.getPoints( this.resolution )
+    )
+
+    this.track.geometry = ellipsePath.createPointsGeometry( this.resolution )
+
+  }
 
 }
 
-inherit( Orbit, THREE.Group )
+inherit( OrbitHelper, THREE.Group )
