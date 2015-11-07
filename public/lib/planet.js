@@ -100,7 +100,7 @@ function createStar() {
 }
 
 createStar.material = new THREE.MeshBasicMaterial({
-  color: new THREE.Color( 'yellow' )
+  color: new THREE.Color( 'white' )
 })
 
 function createSky() {
