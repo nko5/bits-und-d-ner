@@ -43,4 +43,14 @@ function setupScene() {
   renderer.shadowMap.cullFace = THREE.CullFaceFront
   renderer.shadowMap.cascade = true
 
+  // Helpers
+  var gridHelper = new THREE.GridHelper( 10000, 100 )
+  gridHelper.material.opacity = 0.3
+  gridHelper.material.transparent = true
+
+  scene.add( gridHelper )
+
+  var axisHelper = new THREE.AxisHelper( 10000 )
+  scene.add( axisHelper )
+
 }
