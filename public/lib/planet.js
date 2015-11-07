@@ -54,6 +54,22 @@ function createPlanet( options ) {
 
 }
 
+function randomSpherePoint() {
+
+   var u = Math.random()
+   var v = Math.random()
+
+   var theta = 2 * Math.PI * u
+   var phi = Math.acos( 2 * v - 1 )
+
+   var x = Math.sin( phi ) * Math.cos( theta )
+   var y = Math.sin( phi ) * Math.sin( theta )
+   var z = Math.cos( phi )
+
+   return new THREE.Vector3( x, y, z )
+
+}
+
 function createSphere( radius, x, y ) {
 
   var sphere = new THREE.Mesh(
@@ -73,28 +89,15 @@ function createSphere( radius, x, y ) {
 
 function createStar() {
 
-  var x = Math.random() - 0.5, y = Math.random() - 0.5, z = Math.random() - 0.5
-  var k = Math.sqrt( x * x + y * y + z * z )
-
-  while ( k < 0.2 || k > 0.3 ) {
-    x = Math.random() - 0.5
-    y = Math.random() - 0.5
-    z = Math.random() - 0.5
-    k = Math.sqrt( x * x + y * y + z * z )
-  }
-
   var r = 10
 
   var star = createSphere( r, 2, 2 )
 
-  star.material = createStar.material
-
   star.receiveShadow = false
   star.castShadow = false
 
-  star.position.x = x / k
-  star.position.y = y / k
-  star.position.z = z / k
+  star.material = createStar.material
+  star.position.copy( randomSpherePoint() )
 
   return star
 
@@ -116,29 +119,19 @@ function createSky() {
     sky.add( star )
   }
 
+  console.log( sky )
+
   return sky
 
 }
 
 function createCloud() {
 
-  var x = Math.random() - 0.5, y = Math.random() - 0.5, z = Math.random() - 0.5
-  var k = Math.sqrt( x * x + y * y + z * z )
-
-  while ( k < 0.2 || k > 0.3 ) {
-    x = Math.random() - 0.5
-    y = Math.random() - 0.5
-    z = Math.random() - 0.5
-    k = Math.sqrt( x * x + y * y + z * z )
-  }
-
   var r = Math.random() * 20 + 2
 
   var cloud = createSphere( r )
 
-  cloud.position.x = x / k
-  cloud.position.y = y / k
-  cloud.position.z = z / k
+  cloud.position.copy( randomSpherePoint() )
 
   return cloud
 
