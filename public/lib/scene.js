@@ -11,8 +11,6 @@ function setupScene() {
   })
 
   var orbit = new Orbit()
-  var orbitHelper = new OrbitHelper( orbit )
-  scene.add( orbitHelper )
 
   createSpaceship( function( mesh ) {
     window.spaceship = mesh
@@ -56,6 +54,9 @@ function setupScene() {
 
   // Helpers
   if( DEBUG ) {
+
+    var orbitHelper = new OrbitHelper( orbit )
+    scene.add( orbitHelper )
 
     var sunLightHelper = new THREE.PointLightHelper( sunLight, 10 )
     scene.add( sunLightHelper )
