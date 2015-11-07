@@ -7,9 +7,7 @@ var FOV = 70
 
 var fps = new Stats()
 
-var renderer = new THREE.WebGLRenderer({
-  antialias: !DEBUG
-})
+var renderer = new THREE.WebGLRenderer()
 
 var clock = new THREE.Clock()
 var scene = new THREE.Scene()
