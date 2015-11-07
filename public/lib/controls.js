@@ -32,7 +32,7 @@ document.addEventListener("keydown", function( event ) {
     matrix.extractRotation( spaceship.matrix )
 
     var direction = new THREE.Vector3( 0, 0, 1 )
-    direction = matrix.multiplyVector3( direction )
+    direction = direction.applyMatrix4( matrix )
 
     spaceship.position.add( direction )
   }
