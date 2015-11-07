@@ -10,6 +10,14 @@ function setupScene() {
     color: new THREE.Color( '#55BB55' )
   })
 
+  createSpaceship( function( mesh ) {
+    scene.add( mesh )
+  })
+
+  createAsteroid( function( mesh ) {
+    scene.add( mesh )
+  })
+
   scene.add( sky )
   scene.add( planet )
 

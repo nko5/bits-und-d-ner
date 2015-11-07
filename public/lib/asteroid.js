@@ -1,9 +1,9 @@
-function createSpaceship( addToScene ) {
+function createAsteroid( addToScene ) {
   var loader = new THREE.JSONLoader()
 
-  loader.load('models/spaceship.json', function (geometry) {
+  loader.load('models/asteroid.json', function (geometry) {
     var material = new THREE.MeshPhongMaterial({
-      color: '#ed8989',
+      color: '#777',
       shading: THREE.FlatShading
     })
 
@@ -12,11 +12,10 @@ function createSpaceship( addToScene ) {
       material
     )
 
-    mesh.scale.x = 10
-    mesh.scale.y = 10
-    mesh.scale.z = 10
+    mesh.material.shininess = 0
 
-    mesh.position.z = 500
+    mesh.position.z = 550
+
     addToScene( mesh )
   })
 }
