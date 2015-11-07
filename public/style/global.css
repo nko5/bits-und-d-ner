@@ -4,10 +4,22 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  color: white;
+  font-family: 'Roboto', sans-serif;
 }
 
 header {
   width: 100%;
   position: absolute;
   top: 0;
+  text-align: center;
+  margin: 15px;
+}
+
+header * {
+  display: inline;
+}
+
+iframe {
+  float: left;
 }
