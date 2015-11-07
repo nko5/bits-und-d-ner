@@ -26,4 +26,15 @@ document.addEventListener("keydown", function( event ) {
     spaceship.rotateZ( -0.1 )
   }
 
+  // THRUSTER
+  if ( event.keyCode === 32 ) { // Space
+    var matrix = new THREE.Matrix4()
+    matrix.extractRotation( spaceship.matrix )
+
+    var direction = new THREE.Vector3( 0, 0, 1 )
+    direction = matrix.multiplyVector3( direction )
+
+    spaceship.position.add( direction )
+  }
+
 });
