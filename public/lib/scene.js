@@ -10,8 +10,9 @@ function setupScene() {
     color: new THREE.Color( '#55BB55' )
   })
 
-  // var orbit = new OrbitHelper()
-  // scene.add( orbit )
+  var orbit = new Orbit()
+  var orbitHelper = new OrbitHelper( orbit )
+  scene.add( orbitHelper )
 
   createSpaceship( function( mesh ) {
     window.spaceship = mesh
@@ -41,9 +42,9 @@ function setupScene() {
   var controls = new THREE.OrbitControls(sceneCamera)
 
   // sceneCamera
-  sceneCamera.position.z = 50
-  sceneCamera.position.y = 25
-  sceneCamera.position.x = 25
+  sceneCamera.position.z = 150
+  sceneCamera.position.y = 100
+  sceneCamera.position.x = 100
   sceneCamera.lookAt( scene.getObjectByName( 'planet' ).position )
   window.currentCamera = sceneCamera
 
