@@ -18,6 +18,7 @@ function resize() {
   var width = window.innerWidth
   var height = window.innerHeight
   
+  renderer.setPixelRatio( window.devicePixelRatio )
   renderer.setSize( width, height )
   
   camera.aspect = width / height
@@ -42,6 +43,7 @@ window.addEventListener( 'DOMContentLoaded', function() {
   document.querySelector( 'main' )
     .appendChild( renderer.domElement )
   
+  setupScene()
   resize()
   render()
   
