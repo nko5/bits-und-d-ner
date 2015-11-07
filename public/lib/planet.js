@@ -132,7 +132,7 @@ function createCloud() {
     k = Math.sqrt( x * x + y * y + z * z )
   }
 
-  var r = Math.random() * 8 + 2
+  var r = Math.random() * 20 + 2
 
   var cloud = createSphere( r )
 
