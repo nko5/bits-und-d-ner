@@ -1,47 +1,59 @@
 ROTATION_SPEED = 0.1
 THRUSTER_SPEED = 0.5
 
-var map = []
-onkeydown = onkeyup = function( e ){
-  map[e.keyCode] = e.type === 'keydown'
+var keyMap = {}
+var rotationMatrix = new THREE.Matrix4()
+var direction = new THREE.Vector3( 0, 0, THRUSTER_SPEED )
+
+function setKey( e ) {
+  keyMap[e.keyCode] = e.type === 'keydown'
 }
 
+window.addEventListener( 'keydown', setKey )
+window.addEventListener( 'keyup', setKey )
+
 function updateSpaceship() {
+
   // PITCH
-  if ( map[87] ) { // W
+  if ( keyMap[87] ) { // W
     spaceship.rotateX( ROTATION_SPEED )
   }
 
-  if ( map[83] ) { // S
+  if ( keyMap[83] ) { // S
     spaceship.rotateX( -ROTATION_SPEED )
   }
 
   // YAW
-  if ( map[68] ) { // D
+  if ( keyMap[68] ) { // D
     spaceship.rotateY( -ROTATION_SPEED )
   }
 
-  if ( map[65] ) { // A
+  if ( keyMap[65] ) { // A
     spaceship.rotateY( ROTATION_SPEED )
   }
 
   // ROLL
-  if ( map[69] ) { // E
+  if ( keyMap[69] ) { // E
     spaceship.rotateZ( ROTATION_SPEED )
   }
 
-  if ( map[81] ) { // Q
+  if ( keyMap[81] ) { // Q
     spaceship.rotateZ( -ROTATION_SPEED )
   }
 
   // THRUSTER
-  if ( map[32] ) { // Space
-    var matrix = new THREE.Matrix4()
-    matrix.extractRotation( spaceship.matrix )
+  if ( keyMap[32] ) { // Space
 
-    var direction = new THREE.Vector3( 0, 0, THRUSTER_SPEED )
-    direction = direction.applyMatrix4( matrix )
+    rotationMatrix.identity()
+    rotationMatrix.extractRotation( spaceship.matrix )
+
+    direction.x = 0
+    direction.y = 0
+    direction.z = THRUSTER_SPEED
+    direction = direction.applyMatrix4( rotationMatrix )
 
     spaceship.position.add( direction )
+
   }
+
 }
