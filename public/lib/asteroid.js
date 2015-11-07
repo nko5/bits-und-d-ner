@@ -14,7 +14,7 @@ function createAsteroid( addToScene ) {
 
     mesh.material.shininess = 0
 
-    mesh.position.z = 550
+    mesh.position.z = 50
 
     addToScene( mesh )
   })

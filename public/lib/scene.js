@@ -11,6 +11,7 @@ function setupScene() {
   })
 
   createSpaceship( function( mesh ) {
+    window.spaceship = mesh
     scene.add( mesh )
   })
 
@@ -31,11 +32,17 @@ function setupScene() {
   scene.add( sunLight )
   scene.add( ambientLight )
 
-  // Camera
-  camera.position.z = 100
-  camera.position.y = 50
-  camera.position.x = 50
-  camera.lookAt( scene.getObjectByName( 'planet' ).position )
+  window.sceneCamera = new THREE.PerspectiveCamera(
+    FOV, window.innerWidth / window.innerHeight, NEAR, FAR
+  )
+  var controls = new THREE.OrbitControls(sceneCamera)
+
+  // sceneCamera
+  sceneCamera.position.z = 100
+  sceneCamera.position.y = 50
+  sceneCamera.position.x = 50
+  sceneCamera.lookAt( scene.getObjectByName( 'planet' ).position )
+  window.currentCamera = sceneCamera
 
   // Renderer options
   renderer.shadowMap.enabled = true

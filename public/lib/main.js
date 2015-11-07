@@ -12,15 +12,9 @@ var mb = new Stats()
 var renderer = new THREE.WebGLRenderer({
   antialias: !DEBUG
 })
-// renderer.setClearColor(new THREE.Color('lightblue'), 1)
 
 var clock = new THREE.Clock()
 var scene = new THREE.Scene()
-var camera = new THREE.PerspectiveCamera(
-  FOV, window.innerWidth / window.innerHeight, NEAR, FAR
-)
-
-var controls = new THREE.OrbitControls(camera)
 
 function resize() {
 
@@ -30,8 +24,8 @@ function resize() {
   renderer.setPixelRatio( window.devicePixelRatio )
   renderer.setSize( width, height )
 
-  camera.aspect = width / height
-  camera.updateProjectionMatrix()
+  currentCamera.aspect = width / height
+  currentCamera.updateProjectionMatrix()
 
 }
 
@@ -51,7 +45,8 @@ function render() {
   p.rotation.y += 0.003
   // p.rotation.z += 0.002
 
-  renderer.render( scene, camera )
+  renderer.render( scene, window.currentCamera )
+
   // controls.update( delta )
 
   if( DEBUG ) {
