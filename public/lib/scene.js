@@ -38,9 +38,9 @@ function setupScene() {
   var controls = new THREE.OrbitControls(sceneCamera)
 
   // sceneCamera
-  sceneCamera.position.z = 100
-  sceneCamera.position.y = 50
-  sceneCamera.position.x = 50
+  sceneCamera.position.z = 50
+  sceneCamera.position.y = 25
+  sceneCamera.position.x = 25
   sceneCamera.lookAt( scene.getObjectByName( 'planet' ).position )
   window.currentCamera = sceneCamera
 
