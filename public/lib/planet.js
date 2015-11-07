@@ -119,8 +119,6 @@ function createSky() {
     sky.add( star )
   }
 
-  console.log( sky )
-
   return sky
 
 }
