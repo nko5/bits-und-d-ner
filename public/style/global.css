@@ -75,8 +75,8 @@ footer {
   margin-right: 2px;
 }
 
-.w-key {
-  margin-left: 38px;
+.roll {
+  border-color: grey;
 }
 
 /* Generic Flex */
