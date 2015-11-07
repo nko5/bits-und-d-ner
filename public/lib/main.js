@@ -27,11 +27,12 @@ function resize() {
 
 function update( delta ) {
   updateSpaceship()
+  raytrace()
 }
 
 function render() {
 
-  if( DEBUG ) {
+  if ( DEBUG ) {
     fps.begin()
   }
 

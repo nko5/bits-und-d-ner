@@ -19,7 +19,7 @@ function createSpaceship( addToScene ) {
   })
 }
 
-function addCamera() {
+function addCamera( mesh ) {
   window.spaceshipCamera = new THREE.PerspectiveCamera(
     FOV, window.innerWidth / window.innerHeight, NEAR, FAR
   )
@@ -31,10 +31,39 @@ function addCamera() {
   spaceshipCamera.position.y = 12
   spaceshipCamera.lookAt( mesh.position )
 
-  if (!DEBUG) {
+  if ( !DEBUG ) {
     window.currentCamera = spaceshipCamera
   } else {
     scene.add( new THREE.CameraHelper( spaceshipCamera ) )
     mesh.add( new THREE.AxisHelper( 5 ) )
+  }
+}
+
+
+var raytraceRotationMatrix = new THREE.Matrix4()
+var raycaster = new THREE.Raycaster()
+function raytrace() {
+  if ( !window.spaceship ) {
+    return
+  }
+
+  rotationMatrix.identity()
+  rotationMatrix.extractRotation( spaceship.matrix )
+  direction = direction.applyMatrix4( rotationMatrix )
+  raycaster.set( spaceship.position, direction, 1, 10 )
+
+  var intersects = raycaster.intersectObjects( scene.children )
+
+  for ( var i = 0; i < intersects.length; i++ ) {
+    if ( intersects[i].object.name === 'planet' ) {
+      alert( 'Bro you crashed into a planet' )
+      location.reload()
+    }
+
+    if ( intersects[i].object.name === 'asteroid' ) {
+      alert( 'Bro you crashed into an asteroid' )
+      location.reload()
+    }
+    console.log( intersects[i].object.name )
   }
 }

@@ -7,19 +7,21 @@ function createAsteroid( addToScene ) {
       shading: THREE.FlatShading
     })
 
-    mesh = new THREE.Mesh(
+    asteroid = new THREE.Mesh(
       geometry,
       material
     )
 
-    mesh.material.shininess = 0
+    asteroid.material.shininess = 0
 
-    mesh.scale.x = 0.1
-    mesh.scale.y = 0.1
-    mesh.scale.z = 0.1
+    asteroid.scale.x = 0.1
+    asteroid.scale.y = 0.1
+    asteroid.scale.z = 0.1
 
-    mesh.position.z = 25
+    asteroid.position.z = 25
 
-    addToScene( mesh )
+    asteroid.name = 'asteroid'
+
+    addToScene( asteroid )
   })
 }
