@@ -1,14 +1,20 @@
+var G = 6.6740831 * 10e-11
+
 /**
  * Orbit
  * @return {Orbit}
  */
-function Orbit() {
+function Orbit( body ) {
 
   if( !(this instanceof Orbit) )
-    return new Orbit()
+    return new Orbit( body )
 
-  this.apoapsis = 100
+  this.body = body
+
+  this.apoapsis = 200
   this.periapsis = 100
+  this.eccentricity = 0
+  this.inclination = 0
 
 }
 
