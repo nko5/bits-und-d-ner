@@ -16,7 +16,7 @@ function createPlanet( options ) {
   if( options.atmosphere ) {
 
     var atmo = new THREE.Mesh(
-      new THREE.SphereGeometry( options.radius * 1.1, options.x, options.y ),
+      new THREE.SphereGeometry( options.radius * 1.2, options.x, options.y ),
       new THREE.MeshPhongMaterial({
         color: new THREE.Color( 'white' ),
         shading: THREE.FlatShading
@@ -36,9 +36,9 @@ function createPlanet( options ) {
       // debugger
       for( var i = 0; i < 20; i++ ) {
         cloud = createCloud()
-        cloud.position.x *= options.radius
-        cloud.position.y *= options.radius
-        cloud.position.z *= options.radius
+        cloud.position.x *= options.radius * 1.1
+        cloud.position.y *= options.radius * 1.1
+        cloud.position.z *= options.radius * 1.1
         atmo.add( cloud )
       }
 
@@ -66,20 +66,23 @@ function createSphere( radius, x, y ) {
 
 function createCloud() {
 
-  var a = Math.random() * 2 - 1
-  var b = Math.random() * Math.PI * 2
+  var x = Math.random() - 0.5, y = Math.random() - 0.5, z = Math.random() - 0.5
+  var k = Math.sqrt( x * x + y * y + z * z )
 
-  var x = Math.cos( a ) * Math.cos( b )
-  var y = Math.sin( b )
-  var z = Math.cos( a ) * Math.sin( b )
+  while ( k < 0.2 || k > 0.3 ) {
+    x = Math.random() - 0.5
+    y = Math.random() - 0.5
+    z = Math.random() - 0.5
+    k = Math.sqrt( x * x + y * y + z * z )
+  }
 
   var r = Math.random() * 10
 
   var cloud = createSphere( r )
 
-  cloud.position.x = x
-  cloud.position.y = y
-  cloud.position.z = z
+  cloud.position.x = x / k
+  cloud.position.y = y / k
+  cloud.position.z = z / k
 
   return cloud
 
