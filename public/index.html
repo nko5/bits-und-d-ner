@@ -41,8 +41,12 @@
       <div class='center'>
       </div>
       <div class='right'>
-        <p id='health'>HEALTH: 100</p>
-        <p id='rubbish'>RUBBISH: 0</p>
+        <div class='row'>
+          <p>HEALTH: </p><p id='health'>100</p>
+        </div>
+        <div class='row'>
+          <p>RUBBISH: </p><p id='rubbish'>0</p>
+        </div>
       </div>
     </footer>
 
@@ -60,6 +64,7 @@
     <script src="/lib/main.js"></script>
     <script src="/lib/scene.js"></script>
     <script src="/lib/controls.js"></script>
+    <script src="/lib/ui.js"></script>
 
     <script type="text/javascript">
       if( !window.DEBUG ) {

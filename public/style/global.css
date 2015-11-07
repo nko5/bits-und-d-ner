@@ -9,6 +9,10 @@ html, body {
   background-color: 'black';
 }
 
+.row * {
+  display: inline;
+}
+
 /* Header */
 
 header {

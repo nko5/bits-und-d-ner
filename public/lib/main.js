@@ -55,7 +55,6 @@ function addStats() {
 
   fps.setMode( 0 )
   fps.domElement.style.position = 'absolute'
-  fps.domElement.style.right = '0px'
   fps.domElement.style.bottom = '0px'
 
   document.body.appendChild( fps.domElement )
