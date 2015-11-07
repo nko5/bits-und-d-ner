@@ -19,6 +19,9 @@ html, body {
 
 iframe {
   background-color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: grey;
 }
 
 /* Header */
