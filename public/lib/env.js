@@ -1,4 +1,4 @@
-if ( location.search.match('debug') && location.search.match('true') ) {
+if ( location.search.match('debug=true') ) {
   window.DEBUG = true
 } else {
   window.DEBUG = false
