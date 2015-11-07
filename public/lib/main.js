@@ -29,6 +29,10 @@ function resize() {
 
 }
 
+function update( delta ) {
+  updateSpaceship()
+}
+
 function render() {
 
   if( DEBUG ) {
@@ -45,9 +49,9 @@ function render() {
   p.rotation.y += 0.003
   // p.rotation.z += 0.002
 
-  renderer.render( scene, window.currentCamera )
+  update( delta )
 
-  // controls.update( delta )
+  renderer.render( scene, window.currentCamera )
 
   if( DEBUG ) {
     fps.end()

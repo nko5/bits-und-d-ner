@@ -1,40 +1,47 @@
-document.addEventListener("keydown", function( event ) {
+ROTATION_SPEED = 0.1
+THRUSTER_SPEED = 0.5
+
+var map = []
+onkeydown = onkeyup = function( e ){
+  map[e.keyCode] = e.type === 'keydown'
+}
+
+function updateSpaceship() {
   // PITCH
-  if ( event.keyCode === 87 ) { // W
-    spaceship.rotateX( 0.1 )
+  if ( map[87] ) { // W
+    spaceship.rotateX( ROTATION_SPEED )
   }
 
-  if ( event.keyCode === 83 ) { // S
-    spaceship.rotateX( -0.1 )
+  if ( map[83] ) { // S
+    spaceship.rotateX( -ROTATION_SPEED )
   }
 
   // YAW
-  if ( event.keyCode === 68 ) { // D
-    spaceship.rotateY( -0.1 )
+  if ( map[68] ) { // D
+    spaceship.rotateY( -ROTATION_SPEED )
   }
 
-  if ( event.keyCode === 65 ) { // A
-    spaceship.rotateY( 0.1 )
+  if ( map[65] ) { // A
+    spaceship.rotateY( ROTATION_SPEED )
   }
 
   // ROLL
-  if ( event.keyCode === 69 ) { // E
-    spaceship.rotateZ( 0.1 )
+  if ( map[69] ) { // E
+    spaceship.rotateZ( ROTATION_SPEED )
   }
 
-  if ( event.keyCode === 81 ) { // Q
-    spaceship.rotateZ( -0.1 )
+  if ( map[81] ) { // Q
+    spaceship.rotateZ( -ROTATION_SPEED )
   }
 
   // THRUSTER
-  if ( event.keyCode === 32 ) { // Space
+  if ( map[32] ) { // Space
     var matrix = new THREE.Matrix4()
     matrix.extractRotation( spaceship.matrix )
 
-    var direction = new THREE.Vector3( 0, 0, 1 )
+    var direction = new THREE.Vector3( 0, 0, THRUSTER_SPEED )
     direction = direction.applyMatrix4( matrix )
 
     spaceship.position.add( direction )
   }
-
-});
+}
