@@ -70,10 +70,7 @@ function createSphere( radius, x, y ) {
 
   var sphere = new THREE.Mesh(
     new THREE.SphereGeometry( radius, x, y ),
-    new THREE.MeshPhongMaterial({
-      color: new THREE.Color( 'white' ),
-      shading: THREE.FlatShading
-    })
+    createSphere.material
   )
 
   sphere.receiveShadow = true
@@ -82,6 +79,11 @@ function createSphere( radius, x, y ) {
   return sphere
 
 }
+
+createSphere.material = new THREE.MeshPhongMaterial({
+  color: new THREE.Color( 'white' ),
+  shading: THREE.FlatShading
+})
 
 function createStar() {
 
