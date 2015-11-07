@@ -3,7 +3,7 @@ function setupScene() {
   var planet = createPlanet({
     atmosphere: true,
     clouds: true,
-    radius: 100,
+    radius: 300,
     x: 20,
     y: 10,
     color: new THREE.Color( '#55BB55' )
@@ -22,7 +22,7 @@ function setupScene() {
   scene.add( ambientLight )
 
   // Camera
-  camera.position.z = 500
+  camera.position.z = 800
   camera.position.y = 200
   camera.position.x = 200
   camera.lookAt( scene.getObjectByName( 'planet' ).position )

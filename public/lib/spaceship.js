@@ -15,7 +15,7 @@ loader.load('models/spaceship.json', function (geometry) {
   spaceShip.scale.y = 10
   spaceShip.scale.z = 10
 
-  spaceShip.position.z = 250
+  spaceShip.position.z = 500
 
   scene.add(spaceShip)
 })
