@@ -64,6 +64,5 @@ function raytrace() {
       alert( 'Bro you crashed into an asteroid' )
       location.reload()
     }
-    console.log( intersects[i].object.name )
   }
 }
