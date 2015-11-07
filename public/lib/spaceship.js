@@ -25,6 +25,7 @@ function addCamera() {
   )
 
   mesh.add( spaceshipCamera )
+  mesh.rotation.y = Math.PI
 
   spaceshipCamera.position.z = -20
   spaceshipCamera.position.y = 12

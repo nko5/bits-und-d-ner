@@ -30,3 +30,7 @@ header h3 {
   width: 300px;
   float: right;
 }
+
+header h3 a {
+  text-decoration: none;
+}
