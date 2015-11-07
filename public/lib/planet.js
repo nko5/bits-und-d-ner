@@ -121,7 +121,7 @@ function createSky() {
 
 function createCloud() {
 
-  var r = Math.random() * 20 + 2
+  var r = Math.random() * 0.5 + 0.2
 
   var cloud = createSphere( r )
 

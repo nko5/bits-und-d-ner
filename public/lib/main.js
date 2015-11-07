@@ -1,7 +1,7 @@
 // Camera clipping planes
 // (from 1*10^-6 to 1*10^27 meters)
 // (1 micrometer to 100 billion light years)
-var FAR = 1e27
+var FAR = 1e6
 var NEAR = 0.1
 var FOV = 70
 
@@ -9,7 +9,9 @@ var fps = new Stats()
 var ms = new Stats()
 var mb = new Stats()
 
-var renderer = new THREE.WebGLRenderer({})
+var renderer = new THREE.WebGLRenderer({
+  antialias: !DEBUG
+})
 // renderer.setClearColor(new THREE.Color('lightblue'), 1)
 
 var clock = new THREE.Clock()
@@ -43,6 +45,11 @@ function render() {
 
   // Time delta for camera controls
   var delta = clock.getDelta()
+
+  var p = scene.getObjectByName( 'planet' )
+
+  p.rotation.y += 0.003
+  // p.rotation.z += 0.002
 
   renderer.render( scene, camera )
   // controls.update( delta )

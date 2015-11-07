@@ -4,7 +4,7 @@ function setupScene() {
   var planet = createPlanet({
     atmosphere: true,
     clouds: true,
-    radius: 300,
+    radius: 10,
     x: 20,
     y: 10,
     color: new THREE.Color( '#55BB55' )
@@ -32,19 +32,22 @@ function setupScene() {
   scene.add( ambientLight )
 
   // Camera
-  camera.position.z = 1500
-  camera.position.y = 500
-  camera.position.x = 500
+  camera.position.z = 100
+  camera.position.y = 50
+  camera.position.x = 50
   camera.lookAt( scene.getObjectByName( 'planet' ).position )
 
   // Renderer options
   renderer.shadowMap.enabled = true
   renderer.shadowMap.type = THREE.PCFSoftShadowMap
-  renderer.shadowMap.cullFace = THREE.CullFaceFront
+  renderer.shadowMap.cullFace = THREE.CullFaceBack
   renderer.shadowMap.cascade = true
 
   // Helpers
   if( DEBUG ) {
+
+    var sunLightHelper = new THREE.PointLightHelper( sunLight, 10 )
+    scene.add( sunLightHelper )
 
     var gridHelper = new THREE.GridHelper( 1000, 100 )
     gridHelper.material.opacity = 0.3
