@@ -12,18 +12,29 @@ function Orbit() {
   this.apoapsis = 100
   this.periapsis = 100
 
-  this.ellipse = new Three.EllipseCurve(
+  this.resolution = 640
+  this.color = new THREE.Color( 'magenta' )
+
+  this.ellipse = new THREE.EllipseCurve(
     0, 0,
     this.apoapsis,
     this.periapsis,
-    0, 2 * Math.PI,
-    false
+    0, 2 * Math.PI
   )
 
-  this.track = new THREE.Path( this.ellipse.getPoints( this.resolution ) )
-  this.track.name = 'track'
+  this.ellipsePath = new THREE.Path(
+    this.ellipse.getPoints( this.resolution )
+  )
 
-  this.add( track )
+  this.track = new THREE.Line(
+    this.ellipsePath.createPointsGeometry( this.resolution ),
+    new THREE.LineBasicMaterial({ color: this.color })
+  )
+
+  this.track.name = 'track'
+  this.track.rotation.x = Math.PI / 2
+
+  this.add( this.track )
 
 }
 

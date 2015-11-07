@@ -10,6 +10,9 @@ function setupScene() {
     color: new THREE.Color( '#55BB55' )
   })
 
+  var orbit = new Orbit()
+  scene.add( orbit )
+
   createSpaceship( function( mesh ) {
     window.spaceship = mesh
     scene.add( mesh )
