@@ -46,10 +46,6 @@ function createPlanet( options ) {
 
   }
 
-  setInterval( function() {
-    planet.rotation.y += 0.005
-  }, 25)
-
   return planet
 
 }
