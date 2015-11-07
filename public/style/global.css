@@ -6,6 +6,7 @@ html, body {
   overflow: hidden;
   color: white;
   font-family: 'Roboto', sans-serif;
+  background-color: 'black';
 }
 
 header {
@@ -22,4 +23,10 @@ header * {
 
 iframe {
   float: left;
+}
+
+header h3 {
+  margin: 0;
+  width: 300px;
+  float: right;
 }
