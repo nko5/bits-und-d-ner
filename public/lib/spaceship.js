@@ -25,11 +25,6 @@ function addCamera() {
   )
 
   mesh.add( spaceshipCamera )
-  mesh.add( new THREE.AxisHelper( 5 ) )
-
-  spaceshipCamera.add( new THREE.AxisHelper( 5 ) )
-  var helper = new THREE.CameraHelper( spaceshipCamera )
-  scene.add(helper)
 
   spaceshipCamera.position.z = -10
   spaceshipCamera.position.y = 3
@@ -37,5 +32,8 @@ function addCamera() {
 
   if (!DEBUG) {
     window.currentCamera = spaceshipCamera
+  } else {
+    scene.add( new THREE.CameraHelper( spaceshipCamera ) )
+    mesh.add( new THREE.AxisHelper( 5 ) )
   }
 }
