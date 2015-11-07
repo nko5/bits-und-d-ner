@@ -51,6 +51,7 @@ OrbitHelper.prototype = {
     )
 
     this.track.geometry = ellipsePath.createPointsGeometry( this.resolution )
+    this.rotation.z = this.orbit.inclination
 
   }
 
