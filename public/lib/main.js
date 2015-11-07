@@ -6,8 +6,6 @@ var NEAR = 0.1
 var FOV = 70
 
 var fps = new Stats()
-var ms = new Stats()
-var mb = new Stats()
 
 var renderer = new THREE.WebGLRenderer({
   antialias: !DEBUG
@@ -37,17 +35,10 @@ function render() {
 
   if( DEBUG ) {
     fps.begin()
-    ms.begin()
-    mb.begin()
   }
 
   // Time delta for camera controls
   var delta = clock.getDelta()
-
-  var p = scene.getObjectByName( 'planet' )
-
-  p.rotation.y += 0.003
-  // p.rotation.z += 0.002
 
   update( delta )
 
@@ -55,8 +46,6 @@ function render() {
 
   if( DEBUG ) {
     fps.end()
-    ms.end()
-    mb.end()
   }
 
   window.requestAnimationFrame( render )
@@ -70,19 +59,7 @@ function addStats() {
   fps.domElement.style.right = '0px'
   fps.domElement.style.bottom = '0px'
 
-  ms.setMode( 1 )
-  ms.domElement.style.position = 'absolute'
-  ms.domElement.style.right = '80px'
-  ms.domElement.style.bottom = '0px'
-
-  mb.setMode( 2 )
-  mb.domElement.style.position = 'absolute'
-  mb.domElement.style.right = '160px'
-  mb.domElement.style.bottom = '0px'
-
   document.body.appendChild( fps.domElement )
-  document.body.appendChild( ms.domElement )
-  document.body.appendChild( mb.domElement )
 
 }
 
