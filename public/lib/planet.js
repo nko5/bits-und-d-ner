@@ -55,13 +55,20 @@ function createPlanet( options ) {
 }
 
 function createSphere( radius, x, y ) {
-  return new THREE.Mesh(
+
+  var cloud = new THREE.Mesh(
     new THREE.SphereGeometry( radius, x, y ),
     new THREE.MeshPhongMaterial({
       color: new THREE.Color( 'white' ),
       shading: THREE.FlatShading
     })
   )
+
+  cloud.receiveShadow = true
+  cloud.castShadow = true
+
+  return cloud
+
 }
 
 function createCloud() {
