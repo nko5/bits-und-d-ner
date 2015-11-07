@@ -32,9 +32,9 @@ function setupScene() {
   scene.add( ambientLight )
 
   // Camera
-  camera.position.z = 800
-  camera.position.y = 200
-  camera.position.x = 200
+  camera.position.z = 1500
+  camera.position.y = 500
+  camera.position.x = 500
   camera.lookAt( scene.getObjectByName( 'planet' ).position )
 
   // Renderer options
