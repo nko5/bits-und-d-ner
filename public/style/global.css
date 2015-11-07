@@ -9,8 +9,11 @@ html, body {
   background-color: 'black';
 }
 
-.row * {
-  display: inline;
+.row > * {
+  display: inline-block;
+  padding: 0px;
+  margin-top: 6px;
+  margin-bottom: 0px;
 }
 
 iframe {
@@ -45,6 +48,10 @@ footer {
   width: 100%;
   padding-bottom: 16px;
   transform: scale3d(1,1,1);
+}
+
+#health, #rubbish {
+  width: 50px;
 }
 
 /* Generic Flex */
