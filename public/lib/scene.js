@@ -44,13 +44,17 @@ function setupScene() {
   renderer.shadowMap.cascade = true
 
   // Helpers
-  var gridHelper = new THREE.GridHelper( 10000, 100 )
-  gridHelper.material.opacity = 0.3
-  gridHelper.material.transparent = true
+  if( DEBUG ) {
 
-  scene.add( gridHelper )
+    var gridHelper = new THREE.GridHelper( 10000, 100 )
+    gridHelper.material.opacity = 0.3
+    gridHelper.material.transparent = true
 
-  var axisHelper = new THREE.AxisHelper( 10000 )
-  scene.add( axisHelper )
+    scene.add( gridHelper )
+
+    var axisHelper = new THREE.AxisHelper( 10000 )
+    scene.add( axisHelper )
+
+  }
 
 }
