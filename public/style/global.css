@@ -65,7 +65,7 @@ footer {
 
 .key {
   border-style: solid;
-  border-color: white;
+  border-color: #ED8989;
   border-width: 2px;
   padding: 2px;
   padding-left: 6px;
@@ -76,7 +76,7 @@ footer {
 }
 
 .roll {
-  border-color: grey;
+  border-color: #89ED89;
 }
 
 /* Generic Flex */
