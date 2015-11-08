@@ -30,7 +30,8 @@ function raytraceCollision() {
 
     if ( intersectName === 'tv' ||
       intersectName === 'tire' ||
-      intersectName === 'bin' ) {
+      intersectName === 'bin' ||
+      intersectName === 'bottle' ) {
       scene.remove(intersects[i].object)
       adjustRubbishScore( 1 )
       playRubbish()

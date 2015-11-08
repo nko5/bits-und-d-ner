@@ -1,4 +1,4 @@
-var SPACESHIP_START_POSITION = new THREE.Vector3( 0, 0, 20 )
+var SPACESHIP_START_POSITION = new THREE.Vector3( 0, 0, 40 )
 
 function putToStart( spaceship ) {
   spaceship.position.set(

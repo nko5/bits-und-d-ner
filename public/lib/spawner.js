@@ -4,9 +4,9 @@ var ARENA_SIZE = 100
 var availableModels = []
 
 loadModel( 'tire', new THREE.Vector3(0,0,35), 0.75, '#EDED89', availableModels ),
-loadModel( 'bin', new THREE.Vector3(0,0,40), 1, '#ED89ED', availableModels ),
-loadModel( 'bottle', new THREE.Vector3(0,0,45), 0.5, '#EDB589', availableModels )
-loadModel( 'tv', new THREE.Vector3(0,0,30), 2, '#8989ED', availableModels )
+loadModel( 'bin', new THREE.Vector3(0,0,40), 1.5, '#ED89ED', availableModels ),
+loadModel( 'bottle', new THREE.Vector3(0,0,45), 2, '#EDB589', availableModels )
+loadModel( 'tv', new THREE.Vector3(0,0,30), 2.5, '#8989ED', availableModels )
 
 // Spawn rubbish
 setInterval(function() {
