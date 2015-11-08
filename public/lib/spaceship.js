@@ -1,3 +1,19 @@
+var SPACESHIP_START_POSITION = new THREE.Vector3( 0, 0, 20 )
+
+function putToStart( spaceship ) {
+  spaceship.rotation.set(
+    Math.PI,
+    0,
+    0
+  )
+
+  spaceship.position.set(
+    SPACESHIP_START_POSITION.x,
+    SPACESHIP_START_POSITION.y,
+    SPACESHIP_START_POSITION.z
+  )
+}
+
 function createSpaceship( addToScene ) {
   var loader = new THREE.JSONLoader()
 
@@ -7,15 +23,15 @@ function createSpaceship( addToScene ) {
       shading: THREE.FlatShading
     })
 
-    mesh = new THREE.Mesh(
+    var spaceship = new THREE.Mesh(
       geometry,
       material
     )
 
-    mesh.position.z = 20
+    putToStart( spaceship )
 
-    addCamera( mesh )
-    addToScene( mesh )
+    addCamera( spaceship )
+    addToScene( spaceship )
   })
 }
 
@@ -55,14 +71,12 @@ function raytrace() {
   var intersects = raycaster.intersectObjects( scene.children )
 
   for ( var i = 0; i < intersects.length; i++ ) {
-    if ( intersects[i].object.name === 'planet' ) {
-      alert( 'Bro you crashed into a planet' )
-      location.reload()
-    }
+    if ( intersects[i].object.name === 'planet' ||
+      intersects[i].object.name === 'asteroid' ) {
 
-    if ( intersects[i].object.name === 'asteroid' ) {
-      alert( 'Bro you crashed into an asteroid' )
-      location.reload()
+      createExplosion( spaceship.position )
+      putToStart( spaceship )
+      adjustHealthScore( -1 )
     }
   }
 }
