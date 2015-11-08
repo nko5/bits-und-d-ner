@@ -1,10 +1,10 @@
 var modelLoader = new THREE.JSONLoader()
 
-function addModelToScene( name, z, scale ) {
+function addModelToScene( name, z, scale, color ) {
 
   modelLoader.load('models/' + name + '.json', function (geometry) {
     var material = new THREE.MeshPhongMaterial({
-      color: '#777',
+      color: color,
       shading: THREE.FlatShading
     })
 

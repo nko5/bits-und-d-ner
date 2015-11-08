@@ -13,7 +13,7 @@ function createSpaceship( addToScene ) {
 
   loader.load('models/spaceship.json', function (geometry) {
     var material = new THREE.MeshPhongMaterial({
-      color: '#ed8989',
+      color: '#ED8989',
       shading: THREE.FlatShading
     })
 
