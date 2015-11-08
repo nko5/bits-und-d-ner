@@ -56,6 +56,7 @@ function createSpaceship( addToScene ) {
 }
 
 function addCamera( mesh ) {
+
   window.spaceshipCamera = new THREE.PerspectiveCamera(
     FOV, window.innerWidth / window.innerHeight, NEAR, FAR
   )
@@ -64,8 +65,10 @@ function addCamera( mesh ) {
   mesh.rotation.y = Math.PI
 
   spaceshipCamera.position.z = -20
-  spaceshipCamera.position.y = 12
+  spaceshipCamera.position.y = 8
   spaceshipCamera.lookAt( mesh.position )
+
+  new THREE.OrbitControls( spaceshipCamera )
 
   if ( !DEBUG ) {
     window.currentCamera = spaceshipCamera
