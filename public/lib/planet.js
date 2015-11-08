@@ -68,7 +68,7 @@ function createSky() {
 
 function createStar() {
 
-  var r = 10
+  var r = 50
 
   var star = createSphere( r, 2, 2 )
 
@@ -83,7 +83,7 @@ function createStar() {
 }
 
 createStar.material = new THREE.MeshBasicMaterial({
-  color: new THREE.Color( 'white' )
+  color: new THREE.Color( 'yellow' )
 })
 
 function createCloud() {
