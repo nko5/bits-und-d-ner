@@ -7,6 +7,24 @@ function putToStart( spaceship ) {
     SPACESHIP_START_POSITION.z
   )
 
+  if ( bodies.spaceship ) {
+    bodies.spaceship.angularVelocity.x = 0
+    bodies.spaceship.angularVelocity.y = 0
+    bodies.spaceship.angularVelocity.z = 0
+
+    bodies.spaceship.velocity.x = 0
+    bodies.spaceship.velocity.y = 0
+    bodies.spaceship.velocity.z = 0
+
+    bodies.spaceship.position.x = SPACESHIP_START_POSITION.x
+    bodies.spaceship.position.y = SPACESHIP_START_POSITION.y
+    bodies.spaceship.position.z = SPACESHIP_START_POSITION.z
+
+    bodies.spaceship.quaternion.x = 0
+    bodies.spaceship.quaternion.y = 1
+    bodies.spaceship.quaternion.z = 0
+  }
+
   spaceship.rotation.set(
     0,
     Math.PI,
