@@ -14,9 +14,19 @@ function setupPhysics() {
 
   bodies.planet = new CANNON.Body({ mass: 10e9 })
   meshes.planet = scene.getObjectByName( 'planet' )
+  bodies.planet.addShape(
+    new CANNON.Sphere(
+      meshes.planet.geometry.boundingSphere.radius
+    )
+  )
 
   bodies.spaceship = new CANNON.Body({ mass: 500 })
   meshes.spaceship = scene.getObjectByName( 'spaceship' )
+  bodies.spaceship.addShape(
+    new CANNON.Sphere(
+      meshes.spaceship.geometry.boundingSphere.radius
+    )
+  )
 
   physics.addBody( bodies.planet )
   physics.addBody( bodies.spaceship )
