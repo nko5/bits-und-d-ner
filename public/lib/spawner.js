@@ -10,6 +10,7 @@ loadModel( 'tv', new THREE.Vector3(0,0,30), 2.5, '#8989ED', availableModels )
 
 // Spawn rubbish
 setInterval(function() {
+
   var position = new THREE.Vector3(
     Math.random() * ARENA_SIZE - ARENA_SIZE / 2,
     Math.random() * ARENA_SIZE - ARENA_SIZE / 2,
@@ -18,20 +19,26 @@ setInterval(function() {
 
   var randomIndex = Math.floor(Math.random() * availableModels.length)
   var model = availableModels[randomIndex].clone()
+  var body = new CANNON.Body({ mass: 1000 })
+
+  body.mesh = model
+
   model.position.x = position.x
   model.position.y = position.y
   model.position.z = position.z
 
-  var rotationX = Math.random()/100
-  var rotationY = Math.random()/100
-  var rotationZ = Math.random()/100
+  body.addShape( new CANNON.Sphere( model.geometry.boundingSphere.radius ) )
+  body.position.copy( model.position )
 
-  setInterval( function(){
-    model.rotation.x += rotationX
-    model.rotation.y += rotationY
-    model.rotation.z += rotationZ
-  }, 20 )
+  var rotationX = Math.random()
+  var rotationY = Math.random()
+  var rotationZ = Math.random()
 
+  body.angularVelocity.x = rotationX
+  body.angularVelocity.y = rotationY
+  body.angularVelocity.z = rotationZ
+
+  physics.addBody( body )
   scene.add( model )
 
 }, 1000)
@@ -42,29 +49,42 @@ setInterval(function() {
 var asteroids = []
 loadModel( 'asteroid', new THREE.Vector3(0,0,0), 0.2, '#B5B5B5', asteroids )
 
-setInterval(function() {
-  var model = asteroids[0].clone()
+setInterval( function() {
 
-  model.position.x = -(ARENA_SIZE/2) + (ARENA_SIZE * Math.random())
-  model.position.y = -(ARENA_SIZE/2) + (ARENA_SIZE * Math.random())
-  model.position.z = -(ARENA_SIZE/2)
+  var model = asteroids[0].clone()
+  var body = new CANNON.Body({ mass: 2000 })
+
+  body.mesh = model
+
+  model.position.x = -( ARENA_SIZE/2 ) + ( ARENA_SIZE * Math.random() )
+  model.position.y = -( ARENA_SIZE/2 ) + ( ARENA_SIZE * Math.random() )
+  model.position.z = -( ARENA_SIZE/2 )
+
+  body.addShape( new CANNON.Sphere( 2 ) )
+  body.position.copy( model.position )
+
+  body.velocity.set(
+    ( Math.random() * 3 ) -1.5,
+    ( Math.random() * 3 ) -1.5,
+    Math.random() * 20
+  )
 
   setInterval(function() {
-    model.position.z += 0.1
-    if (model.position.z > ARENA_SIZE/2) {
-      scene.remove(model)
+    if( body.position.z > ARENA_SIZE/2 ) {
+      scene.remove( model )
+      physics.removeBody( body )
     }
   }, 20)
 
-  var rotationX = Math.random()/10
-  var rotationY = Math.random()/10
-  var rotationZ = Math.random()/10
+  var rotationX = Math.random()
+  var rotationY = Math.random()
+  var rotationZ = Math.random()
 
-  setInterval( function(){
-    model.rotation.x += rotationX
-    model.rotation.y += rotationY
-    model.rotation.z += rotationZ
-  }, 20 )
+  body.angularVelocity.x = rotationX
+  body.angularVelocity.y = rotationY
+  body.angularVelocity.z = rotationZ
 
+  physics.addBody( body )
   scene.add( model )
-}, interval)
+
+}, interval )

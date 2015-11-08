@@ -39,31 +39,68 @@ function setupPhysics() {
 
 }
 
-function resetSpaceship() {
+function resetSpaceship( collider ) {
+
+  if( collider.mesh.name !== 'asteroid' && collider.mesh.name !== 'planet' ) {
+    adjustRubbishScore( 1 )
+    playRubbish()
+  }
+
   adjustHealthScore( -1 )
   movementEnabled = false
+
   setTimeout( function() {
     putToStart( spaceship )
     movementEnabled = true
   }, 1000)
+
 }
 
 function updatePhysics() {
 
   physics.step( TIMESTEP )
 
-  for( var k in bodies ) {
-    bodies[k].mesh.position.copy( bodies[k].position )
-    bodies[k].mesh.quaternion.copy( bodies[k].quaternion )
+  for( var k = 0; k < physics.bodies.length; k++ ) {
+    physics.bodies[k].mesh.position
+      .copy( physics.bodies[k].position )
+    physics.bodies[k].mesh.quaternion
+      .copy( physics.bodies[k].quaternion )
   }
 
   var colls = physics.narrowphase.result
 
   for( var i = 0; i < colls.length; i++ ) {
-    if( colls[i].bj === bodies.spaceship ) {
-      resetSpaceship()
-    }
+
     createExplosion( colls[i].bj.position )
+
+    if( colls[i].bj === bodies.spaceship ) {
+      resetSpaceship( colls[i].bi )
+      if( colls[i].bi !== bodies.planet ) {
+        physics.removeBody( colls[i].bi )
+        scene.remove( colls[i].bi.mesh )
+      }
+      break
+    }
+
+    if( colls[i].bi === bodies.spaceship ) {
+      resetSpaceship( colls[i].bj )
+      if( colls[i].bj !== bodies.planet ) {
+        physics.removeBody( colls[i].bj )
+        scene.remove( colls[i].bj.mesh )
+      }
+      break
+    }
+
+    if( colls[i].bi.mass < colls[i].bj.mass && colls[i].bi !== bodies.planet ) {
+      physics.removeBody( colls[i].bi )
+      scene.remove( colls[i].bi.mesh )
+    }
+
+    if( colls[i].bj.mass < colls[i].bi.mass && colls[i].bj !== bodies.planet ) {
+      physics.removeBody( colls[i].bj )
+      scene.remove( colls[i].bj.mesh )
+    }
+
   }
 
 }
