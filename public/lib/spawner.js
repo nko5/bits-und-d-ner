@@ -2,11 +2,11 @@ var interval = 1000
 
 var availableModels = []
 
-// addModelToScene( 'asteroid', new THREE.Vector3(0,0,25), 0.1, '#AAA', availableModels ),
-addModelToScene( 'tire', new THREE.Vector3(0,0,35), 0.75, '#EDED89', availableModels ),
-addModelToScene( 'bin', new THREE.Vector3(0,0,40), 1, '#ED89ED', availableModels ),
-addModelToScene( 'bottle', new THREE.Vector3(0,0,45), 0.5, '#EDB589', availableModels )
-addModelToScene( 'tv', new THREE.Vector3(0,0,30), 2, '#8989ED', availableModels )
+// loadModel( 'asteroid', new THREE.Vector3(0,0,25), 0.1, '#AAA', availableModels ),
+loadModel( 'tire', new THREE.Vector3(0,0,35), 0.75, '#EDED89', availableModels ),
+loadModel( 'bin', new THREE.Vector3(0,0,40), 1, '#ED89ED', availableModels ),
+loadModel( 'bottle', new THREE.Vector3(0,0,45), 0.5, '#EDB589', availableModels )
+loadModel( 'tv', new THREE.Vector3(0,0,30), 2, '#8989ED', availableModels )
 
 setInterval(function() {
   var position = new THREE.Vector3(
