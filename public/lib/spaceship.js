@@ -1,12 +1,6 @@
 var SPACESHIP_START_POSITION = new THREE.Vector3( 0, 0, 20 )
 
 function putToStart( spaceship ) {
-  spaceship.rotation.set(
-    Math.PI,
-    0,
-    0
-  )
-
   spaceship.position.set(
     SPACESHIP_START_POSITION.x,
     SPACESHIP_START_POSITION.y,
@@ -28,8 +22,9 @@ function createSpaceship( addToScene ) {
       material
     )
 
-    putToStart( spaceship )
+    spaceship.rotation.y = Math.PI
 
+    putToStart( spaceship )
     addCamera( spaceship )
     addToScene( spaceship )
   })
