@@ -1,5 +1,5 @@
 var interval = 1000
-var ARENA_SIZE = 100
+var ARENA_SIZE = 150
 
 var availableModels = []
 
@@ -11,11 +11,11 @@ loadModel( 'tv', new THREE.Vector3(0,0,30), 2.5, '#8989ED', availableModels )
 // Spawn rubbish
 setInterval(function() {
 
-  var position = new THREE.Vector3(
-    Math.random() * ARENA_SIZE - ARENA_SIZE / 2,
-    Math.random() * ARENA_SIZE - ARENA_SIZE / 2,
-    Math.random() * ARENA_SIZE - ARENA_SIZE / 2
-  )
+  var position = randomSpherePoint()
+
+  position.x *= Math.random() * ARENA_SIZE - ARENA_SIZE / 2
+  position.y *= Math.random() * ARENA_SIZE - ARENA_SIZE / 2
+  position.z *= Math.random() * ARENA_SIZE - ARENA_SIZE / 2
 
   var randomIndex = Math.floor(Math.random() * availableModels.length)
   var model = availableModels[randomIndex].clone()
