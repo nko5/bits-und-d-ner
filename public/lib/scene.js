@@ -24,12 +24,11 @@ function setupScene() {
   scene.add( sky )
   scene.add( planet )
 
-  var sunLight = new THREE.PointLight()
+  var sunLight = new THREE.PointLight( 0x888888 )
   sunLight.name = 'sunlight'
-  sunLight.castShadow = true
   sunLight.position.z = 1000
 
-  var ambientLight = new THREE.AmbientLight( 0x1A1A1A )
+  var ambientLight = new THREE.AmbientLight( 0xCCCCCC )
 
   scene.add( sunLight )
   scene.add( ambientLight )

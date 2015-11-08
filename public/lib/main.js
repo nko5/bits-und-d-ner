@@ -8,6 +8,7 @@ var FOV = 70
 var fps = new Stats()
 
 var renderer = new THREE.WebGLRenderer()
+renderer.setClearColor(new THREE.Color('lightblue'), 1)
 
 var clock = new THREE.Clock()
 var scene = new THREE.Scene()
