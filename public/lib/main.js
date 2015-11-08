@@ -42,6 +42,9 @@ function render() {
 
   update( delta )
 
+  var p = scene.getObjectByName( 'planet' )
+  p.rotation.y += 0.003
+
   renderer.render( scene, window.currentCamera )
 
   if( DEBUG ) {
