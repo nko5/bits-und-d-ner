@@ -69,9 +69,15 @@ function raytrace() {
     if ( intersects[i].object.name === 'planet' ||
       intersects[i].object.name === 'asteroid' ) {
 
+      movementEnabled = false
       createExplosion( spaceship.position )
-      putToStart( spaceship )
       adjustHealthScore( -1 )
+
+
+      setTimeout( function() {
+        putToStart( spaceship )
+        movementEnabled = true
+      }, 1000)
     }
   }
 }

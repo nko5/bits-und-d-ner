@@ -1,5 +1,6 @@
 ROTATION_SPEED = 0.05
 THRUSTER_SPEED = 0.25
+movementEnabled = true
 
 var keyMap = {}
 var rotationMatrix = new THREE.Matrix4()
@@ -13,6 +14,10 @@ window.addEventListener( 'keydown', setKey )
 window.addEventListener( 'keyup', setKey )
 
 function updateSpaceship() {
+
+  if (!movementEnabled) {
+    return
+  }
 
   // PITCH
   if ( keyMap[87] ) { // W
