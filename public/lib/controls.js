@@ -19,32 +19,48 @@ function updateSpaceship() {
     return
   }
 
+  if( !bodies.spaceship || !window.spaceship )
+    return
+
+  rotationMatrix.identity()
+  rotationMatrix.extractRotation( spaceship.matrix )
+
+  direction.x = 0
+  direction.y = 0
+  direction.z = 0
+
   // PITCH
   if ( keyMap[87] ) { // W
-    bodies.spaceship.angularVelocity.x += -ROTATION_SPEED
+    direction.x += ROTATION_SPEED
   }
 
   if ( keyMap[83] ) { // S
-    bodies.spaceship.angularVelocity.x += ROTATION_SPEED
+    direction.x += -ROTATION_SPEED
   }
 
   // YAW
   if ( keyMap[68] ) { // D
-    bodies.spaceship.angularVelocity.y += -ROTATION_SPEED
+    direction.y += -ROTATION_SPEED
   }
 
   if ( keyMap[65] ) { // A
-    bodies.spaceship.angularVelocity.y += ROTATION_SPEED
+    direction.y += ROTATION_SPEED
   }
 
   // ROLL
   if ( keyMap[69] ) { // E
-    bodies.spaceship.angularVelocity.z += -ROTATION_SPEED
+    direction.z += ROTATION_SPEED
   }
 
   if ( keyMap[81] ) { // Q
-    bodies.spaceship.angularVelocity.z += ROTATION_SPEED
+    direction.z += -ROTATION_SPEED
   }
+
+  direction = direction.applyMatrix4( rotationMatrix )
+
+  bodies.spaceship.angularVelocity.x += direction.x
+  bodies.spaceship.angularVelocity.y += direction.y
+  bodies.spaceship.angularVelocity.z += direction.z
 
   // THRUSTER
   if ( keyMap[32] ) { // Space
