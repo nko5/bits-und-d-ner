@@ -40,13 +40,11 @@ function setupPhysics() {
 }
 
 function resetSpaceship( collider ) {
-
-  adjustHealthScore( -1 )
-
   if( collider.mesh.name !== 'asteroid' && collider.mesh.name !== 'planet' ) {
     adjustRubbishScore( 1 )
     playRubbish()
   } else {
+    adjustHealthScore( -1 )
     movementEnabled = false
     setTimeout( function() {
       putToStart( spaceship )
