@@ -21,6 +21,10 @@ function setupScene() {
     scene.add( mesh )
   })
 
+  createTire( function( mesh ) {
+    scene.add( mesh )
+  })
+
   scene.add( sky )
   scene.add( planet )
 
