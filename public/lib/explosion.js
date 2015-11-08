@@ -1,3 +1,5 @@
+var EXPLOSION_TIMEOUT = 1000
+
 var explosionColors = [
   '#FF7558',
   '#FF9858',
@@ -20,9 +22,11 @@ function createExplosion( position ) {
   for( var i = 0; i < 20; i++ ) {
     var randomIndex = Math.floor(explosionMaterials.length * Math.random())
     var material = explosionMaterials[ randomIndex ]
-    material.opacity = 0.5
-    material.transparent = true
-    material.shininess = 0
+
+    // Seems to crash webGL?
+    // material.opacity = 0.5
+    // material.transparent = true
+    // material.shininess = 0
 
     var shard = createSphere( 2, 0, 0, 0, material )
     shard.position.copy( randomSpherePoint() )
@@ -33,4 +37,7 @@ function createExplosion( position ) {
   }
 
   scene.add( explosion )
+  setTimeout( function() {
+    scene.remove( explosion )
+  }, EXPLOSION_TIMEOUT )
 }

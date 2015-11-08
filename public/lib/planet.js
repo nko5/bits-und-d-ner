@@ -87,13 +87,20 @@ createStar.material = new THREE.MeshBasicMaterial({
 })
 
 function createCloud() {
+  var cloudGroup = new THREE.Group()
 
-  var r = Math.random() * 0.5 + 0.2
+  for ( var i = 0; i < 10; i++ ) {
+    var r = Math.random() * 0.4
+    var cloud = createSphere( r )
+    cloud.position.copy( randomSpherePoint() )
+    cloud.position.x *= 0.5
+    cloud.position.y *= 0.5
+    cloud.position.z *= 0.5
+    cloudGroup.add( cloud )
+  }
 
-  var cloud = createSphere( r )
+  cloudGroup.position.copy( randomSpherePoint() )
 
-  cloud.position.copy( randomSpherePoint() )
-
-  return cloud
+  return cloudGroup
 
 }
