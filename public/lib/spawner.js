@@ -11,6 +11,9 @@ loadModel( 'tv', new THREE.Vector3(0,0,30), 2.5, '#8989ED', availableModels )
 // Spawn rubbish
 setInterval(function() {
 
+  if( document.visibilityState && document.visibilityState !== 'visible' )
+    return
+
   var position = randomSpherePoint()
 
   position.x *= Math.random() * ARENA_SIZE - ARENA_SIZE / 2
@@ -50,6 +53,9 @@ var asteroids = []
 loadModel( 'asteroid', new THREE.Vector3(0,0,0), 0.2, '#B5B5B5', asteroids )
 
 setInterval( function() {
+
+  if( document.visibilityState && document.visibilityState !== 'visible' )
+    return
 
   var model = asteroids[0].clone()
   var body = new CANNON.Body({ mass: 2000 })
