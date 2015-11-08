@@ -6,6 +6,12 @@ function putToStart( spaceship ) {
     SPACESHIP_START_POSITION.y,
     SPACESHIP_START_POSITION.z
   )
+
+  spaceship.rotation.set(
+    0,
+    Math.PI,
+    0
+  )
 }
 
 function createSpaceship( addToScene ) {
