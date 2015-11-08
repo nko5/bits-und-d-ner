@@ -1,8 +1,10 @@
-function createSphere( radius, x, y, z ) {
+function createSphere( radius, x, y, z, material ) {
+
+  var material = material || createSphere.material
 
   var sphere = new THREE.Mesh(
     new THREE.SphereGeometry( radius, x, y, z ),
-    createSphere.material
+    material
   )
 
   sphere.receiveShadow = true
