@@ -1,5 +1,5 @@
-ROTATION_SPEED = 0.01
-THRUSTER_SPEED = 0.5
+ROTATION_SPEED = 0.03
+THRUSTER_SPEED = 0.8
 movementEnabled = true
 
 var keyMap = {}

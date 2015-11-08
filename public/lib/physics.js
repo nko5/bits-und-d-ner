@@ -19,7 +19,12 @@ function setupPhysics() {
     )
   )
 
-  bodies.spaceship = new CANNON.Body({ mass: 500 })
+  bodies.spaceship = new CANNON.Body({
+    mass: 500,
+    linearDamping: 0.8,
+    angularDamping: 0.5
+  })
+
   bodies.spaceship.mesh = scene.getObjectByName( 'spaceship' )
   bodies.spaceship.addShape(
     new CANNON.Sphere(
