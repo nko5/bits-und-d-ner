@@ -50,40 +50,21 @@ function createPlanet( options ) {
 
 }
 
-function randomSpherePoint() {
+function createSky() {
 
-   var u = Math.random()
-   var v = Math.random()
+  var sky = new THREE.Group()
 
-   var theta = 2 * Math.PI * u
-   var phi = Math.acos( 2 * v - 1 )
+  for( var i = 0; i < 100; i++ ) {
+    star = createStar()
+    star.position.x *= 10000
+    star.position.y *= 10000
+    star.position.z *= 10000
+    sky.add( star )
+  }
 
-   var x = Math.sin( phi ) * Math.cos( theta )
-   var y = Math.sin( phi ) * Math.sin( theta )
-   var z = Math.cos( phi )
-
-   return new THREE.Vector3( x, y, z )
-
-}
-
-function createSphere( radius, x, y ) {
-
-  var sphere = new THREE.Mesh(
-    new THREE.SphereGeometry( radius, x, y ),
-    createSphere.material
-  )
-
-  sphere.receiveShadow = true
-  sphere.castShadow = true
-
-  return sphere
+  return sky
 
 }
-
-createSphere.material = new THREE.MeshPhongMaterial({
-  color: new THREE.Color( 'white' ),
-  shading: THREE.FlatShading
-})
 
 function createStar() {
 
@@ -104,22 +85,6 @@ function createStar() {
 createStar.material = new THREE.MeshBasicMaterial({
   color: new THREE.Color( 'white' )
 })
-
-function createSky() {
-
-  var sky = new THREE.Group()
-
-  for( var i = 0; i < 100; i++ ) {
-    star = createStar()
-    star.position.x *= 10000
-    star.position.y *= 10000
-    star.position.z *= 10000
-    sky.add( star )
-  }
-
-  return sky
-
-}
 
 function createCloud() {
 
