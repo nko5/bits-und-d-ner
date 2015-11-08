@@ -1,7 +1,7 @@
 var modelLoader = new THREE.JSONLoader()
 
-function addModelToScene( name, z, scale, color ) {
-
+function loadModel( name, position, scale, color, availableModels) {
+  var mesh
   modelLoader.load('models/' + name + '.json', function (geometry) {
     var material = new THREE.MeshPhongMaterial({
       color: color,
@@ -14,12 +14,14 @@ function addModelToScene( name, z, scale, color ) {
     )
 
     mesh.material.shininess = 0
-    mesh.position.z = z
+    mesh.position.x = position.x
+    mesh.position.y = position.y
+    mesh.position.z = position.z
     mesh.scale.x = scale
     mesh.scale.y = scale
     mesh.scale.z = scale
 
     mesh.name = name
-    scene.add( mesh )
+    availableModels.push( mesh )
   })
 }

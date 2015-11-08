@@ -17,12 +17,6 @@ function setupScene() {
     scene.add( mesh )
   })
 
-  addModelToScene( 'asteroid', 25, 0.1, '#AAA' )
-  addModelToScene( 'tv', 30, 2, '#8989ED' )
-  addModelToScene( 'tire', 35, 0.75, '#EDED89' )
-  addModelToScene( 'bin', 40, 1, '#ED89ED' )
-  addModelToScene( 'bottle', 45, 0.5, '#EDB589' )
-
   scene.add( sky )
   scene.add( planet )
 
