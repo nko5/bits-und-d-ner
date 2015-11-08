@@ -1,5 +1,5 @@
 ROTATION_SPEED = 0.01
-THRUSTER_SPEED = 0.01
+THRUSTER_SPEED = 0.5
 movementEnabled = true
 
 var keyMap = {}
@@ -57,7 +57,11 @@ function updateSpaceship() {
     direction.z = THRUSTER_SPEED
     direction = direction.applyMatrix4( rotationMatrix )
 
-    // bodies.spaceship.velocity.set( direction )
+    bodies.spaceship.velocity.set(
+      bodies.spaceship.velocity.x + direction.x,
+      bodies.spaceship.velocity.y + direction.y,
+      bodies.spaceship.velocity.z + direction.z
+    )
 
   }
 
