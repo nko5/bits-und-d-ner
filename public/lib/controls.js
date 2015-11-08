@@ -39,11 +39,11 @@ function updateSpaceship() {
 
   // ROLL
   if ( keyMap[69] ) { // E
-    bodies.spaceship.angularVelocity.z += ROTATION_SPEED
+    bodies.spaceship.angularVelocity.z += -ROTATION_SPEED
   }
 
   if ( keyMap[81] ) { // Q
-    bodies.spaceship.angularVelocity.z += -ROTATION_SPEED
+    bodies.spaceship.angularVelocity.z += ROTATION_SPEED
   }
 
   // THRUSTER
