@@ -38,6 +38,9 @@ function createExplosion( position ) {
   }
 
   scene.add( explosion )
+
+  playExplosion()
+
   setTimeout( function() {
     scene.remove( explosion )
   }, EXPLOSION_TIMEOUT )
