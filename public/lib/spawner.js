@@ -21,6 +21,16 @@ setInterval(function() {
   model.position.y = position.y
   model.position.z = position.z
 
+  var rotationX = Math.random()/100
+  var rotationY = Math.random()/100
+  var rotationZ = Math.random()/100
+
+  setInterval( function(){
+    model.rotation.x += rotationX
+    model.rotation.y += rotationY
+    model.rotation.z += rotationZ
+  }, 20 )
+
   scene.add( model )
 
 }, 1000)
