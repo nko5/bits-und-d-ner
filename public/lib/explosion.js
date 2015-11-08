@@ -3,7 +3,8 @@ var EXPLOSION_TIMEOUT = 1000
 var explosionColors = [
   '#FF7558',
   '#FF9858',
-  '#FD575B'
+  '#FD575B',
+  '#FFFF77'
 ]
 
 var explosionMaterials = explosionColors.map( function( color ) {
