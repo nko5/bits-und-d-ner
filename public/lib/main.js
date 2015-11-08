@@ -28,7 +28,7 @@ function resize() {
 
 function update( delta ) {
   updateSpaceship()
-  raytrace()
+  raytraceCollision()
 }
 
 function render() {
