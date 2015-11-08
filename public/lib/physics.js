@@ -49,4 +49,10 @@ function updatePhysics() {
     meshes[k].quaternion.copy( bodies[k].quaternion )
   }
 
+  var colls = physics.narrowphase.result
+
+  for( var i = 0; i < colls.length; i++ ) {
+    createExplosion( colls[i].bj.position )
+  }
+
 }

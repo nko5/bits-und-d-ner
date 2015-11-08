@@ -37,7 +37,6 @@ function render() {
 
   updatePhysics()
   updateSpaceship()
-  raytraceCollision()
 
   renderer.render( scene, window.currentCamera )
 
