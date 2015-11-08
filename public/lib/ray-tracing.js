@@ -13,18 +13,26 @@ function raytraceCollision() {
   var intersects = raycaster.intersectObjects( scene.children )
 
   for ( var i = 0; i < intersects.length; i++ ) {
-    if ( intersects[i].object.name === 'planet' ||
-      intersects[i].object.name === 'asteroid' ) {
+    var intersectName = intersects[i].object.name
+
+    if ( intersectName === 'planet' ||
+      intersectName === 'asteroid' ) {
 
       movementEnabled = false
       createExplosion( spaceship.position )
       adjustHealthScore( -1 )
 
-
       setTimeout( function() {
         putToStart( spaceship )
         movementEnabled = true
       }, 1000)
+    }
+
+    if ( intersectName === 'tv' ||
+      intersectName === 'tire' ||
+      intersectName === 'bin' ) {
+      adjustRubbishScore( 1 )
+      playRubbish()
     }
   }
 }
