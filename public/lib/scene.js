@@ -17,17 +17,9 @@ function setupScene() {
     scene.add( mesh )
   })
 
-  createAsteroid( function( mesh ) {
-    scene.add( mesh )
-  })
-
-  createTire( function( mesh ) {
-    scene.add( mesh )
-  })
-
-  createTv( function( mesh ) {
-    scene.add( mesh )
-  })
+  addModelToScene( 'asteroid', 25, 0.1 )
+  addModelToScene( 'tv', 30, 1 )
+  addModelToScene( 'tire', 35, 1 )
 
   scene.add( sky )
   scene.add( planet )

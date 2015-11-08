@@ -1,13 +1,14 @@
-function addModelToScene( name, z, scale ) {
-  var loader = new THREE.JSONLoader()
+var modelLoader = new THREE.JSONLoader()
 
-  loader.load('models/' + name + '.json', function (geometry) {
+function addModelToScene( name, z, scale ) {
+
+  modelLoader.load('models/' + name + '.json', function (geometry) {
     var material = new THREE.MeshPhongMaterial({
       color: '#777',
       shading: THREE.FlatShading
     })
 
-    mesh = new THREE.Mesh(
+    var mesh = new THREE.Mesh(
       geometry,
       material
     )
@@ -15,11 +16,10 @@ function addModelToScene( name, z, scale ) {
     mesh.material.shininess = 0
     mesh.position.z = z
     mesh.scale.x = scale
-    mesh.scale.x = scale
-    mesh.scale.x = scale
+    mesh.scale.y = scale
+    mesh.scale.z = scale
 
     mesh.name = name
-
     scene.add( mesh )
   })
 }
