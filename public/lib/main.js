@@ -26,11 +26,6 @@ function resize() {
 
 }
 
-function update( delta ) {
-  updateSpaceship()
-  raytraceCollision()
-}
-
 function render() {
 
   if ( DEBUG ) {
@@ -40,10 +35,9 @@ function render() {
   // Time delta for camera controls
   var delta = clock.getDelta()
 
-  update( delta )
-
-  var p = scene.getObjectByName( 'planet' )
-  p.rotation.y += 0.003
+  updatePhysics()
+  updateSpaceship()
+  // raytraceCollision()
 
   renderer.render( scene, window.currentCamera )
 

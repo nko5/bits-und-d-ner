@@ -28,6 +28,7 @@ function createSpaceship( addToScene ) {
       material
     )
 
+    spaceship.name = 'spaceship'
     spaceship.rotation.y = Math.PI
 
     putToStart( spaceship )

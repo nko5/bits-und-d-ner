@@ -15,6 +15,7 @@ function setupScene() {
   createSpaceship( function( mesh ) {
     window.spaceship = mesh
     scene.add( mesh )
+    setupPhysics()
   })
 
   scene.add( sky )

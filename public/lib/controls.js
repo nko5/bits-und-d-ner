@@ -1,5 +1,5 @@
-ROTATION_SPEED = 0.05
-THRUSTER_SPEED = 0.25
+ROTATION_SPEED = 0.01
+THRUSTER_SPEED = 0.01
 movementEnabled = true
 
 var keyMap = {}
@@ -21,29 +21,29 @@ function updateSpaceship() {
 
   // PITCH
   if ( keyMap[87] ) { // W
-    spaceship.rotateX( ROTATION_SPEED )
+    bodies.spaceship.angularVelocity.x += -ROTATION_SPEED
   }
 
   if ( keyMap[83] ) { // S
-    spaceship.rotateX( -ROTATION_SPEED )
+    bodies.spaceship.angularVelocity.x += ROTATION_SPEED
   }
 
   // YAW
   if ( keyMap[68] ) { // D
-    spaceship.rotateY( -ROTATION_SPEED )
+    bodies.spaceship.angularVelocity.y += -ROTATION_SPEED
   }
 
   if ( keyMap[65] ) { // A
-    spaceship.rotateY( ROTATION_SPEED )
+    bodies.spaceship.angularVelocity.y += ROTATION_SPEED
   }
 
   // ROLL
   if ( keyMap[69] ) { // E
-    spaceship.rotateZ( ROTATION_SPEED )
+    bodies.spaceship.angularVelocity.z += ROTATION_SPEED
   }
 
   if ( keyMap[81] ) { // Q
-    spaceship.rotateZ( -ROTATION_SPEED )
+    bodies.spaceship.angularVelocity.z += -ROTATION_SPEED
   }
 
   if ( keyMap[74] ) { // J
@@ -63,7 +63,7 @@ function updateSpaceship() {
     direction.z = THRUSTER_SPEED
     direction = direction.applyMatrix4( rotationMatrix )
 
-    spaceship.position.add( direction )
+    // bodies.spaceship.velocity.set( direction )
 
   }
 
