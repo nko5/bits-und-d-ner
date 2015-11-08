@@ -46,12 +46,6 @@ function updateSpaceship() {
     bodies.spaceship.angularVelocity.z += -ROTATION_SPEED
   }
 
-  if ( keyMap[74] ) { // J
-    shooting = true
-  } else {
-    shooting = false
-  }
-
   // THRUSTER
   if ( keyMap[32] ) { // Space
 
