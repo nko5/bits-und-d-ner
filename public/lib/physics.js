@@ -40,18 +40,19 @@ function setupPhysics() {
 }
 
 function resetSpaceship( collider ) {
+
   if( collider.mesh.name !== 'asteroid' && collider.mesh.name !== 'planet' ) {
     adjustRubbishScore( 1 )
     playRubbish()
   } else {
-    adjustHealthScore( -1 )
     movementEnabled = false
+    adjustHealthScore( -1 )
+    createExplosion( bodies.spaceship.position )
     setTimeout( function() {
       putToStart( spaceship )
       movementEnabled = true
     }, 1000)
   }
-
 
 }
 
@@ -70,8 +71,6 @@ function updatePhysics() {
 
   for( var i = 0; i < colls.length; i++ ) {
 
-    createExplosion( colls[i].bj.position )
-
     if( colls[i].bj === bodies.spaceship ) {
       resetSpaceship( colls[i].bi )
       if( colls[i].bi !== bodies.planet ) {
@@ -89,6 +88,8 @@ function updatePhysics() {
       }
       break
     }
+
+    createExplosion( colls[i].bj.position )
 
     if( colls[i].bi.mass < colls[i].bj.mass && colls[i].bi !== bodies.planet ) {
       physics.removeBody( colls[i].bi )
