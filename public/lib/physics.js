@@ -8,23 +8,22 @@ physics.broadphase.useBoundingBoxes = true
 physics.solver.iterations = 10
 
 var bodies = {}
-var meshes = {}
 
 function setupPhysics() {
 
   bodies.planet = new CANNON.Body({ mass: 10e9 })
-  meshes.planet = scene.getObjectByName( 'planet' )
+  bodies.planet.mesh = scene.getObjectByName( 'planet' )
   bodies.planet.addShape(
     new CANNON.Sphere(
-      meshes.planet.geometry.boundingSphere.radius
+      bodies.planet.mesh.geometry.boundingSphere.radius
     )
   )
 
   bodies.spaceship = new CANNON.Body({ mass: 500 })
-  meshes.spaceship = scene.getObjectByName( 'spaceship' )
+  bodies.spaceship.mesh = scene.getObjectByName( 'spaceship' )
   bodies.spaceship.addShape(
     new CANNON.Sphere(
-      meshes.spaceship.geometry.boundingSphere.radius
+      bodies.spaceship.mesh.geometry.boundingSphere.radius
     )
   )
 
@@ -34,10 +33,19 @@ function setupPhysics() {
   bodies.planet.angularVelocity.set( 0, 0.2, 0 )
 
   for( var k in bodies ) {
-    bodies[k].position.copy( meshes[k].position )
-    bodies[k].quaternion.copy( meshes[k].quaternion )
+    bodies[k].position.copy( bodies[k].mesh.position )
+    bodies[k].quaternion.copy( bodies[k].mesh.quaternion )
   }
 
+}
+
+function resetSpaceship() {
+  adjustHealthScore( -1 )
+  movementEnabled = false
+  setTimeout( function() {
+    putToStart( spaceship )
+    movementEnabled = true
+  }, 1000)
 }
 
 function updatePhysics() {
@@ -45,13 +53,16 @@ function updatePhysics() {
   physics.step( TIMESTEP )
 
   for( var k in bodies ) {
-    meshes[k].position.copy( bodies[k].position )
-    meshes[k].quaternion.copy( bodies[k].quaternion )
+    bodies[k].mesh.position.copy( bodies[k].position )
+    bodies[k].mesh.quaternion.copy( bodies[k].quaternion )
   }
 
   var colls = physics.narrowphase.result
 
   for( var i = 0; i < colls.length; i++ ) {
+    if( colls[i].bj === bodies.spaceship ) {
+      resetSpaceship()
+    }
     createExplosion( colls[i].bj.position )
   }
 
