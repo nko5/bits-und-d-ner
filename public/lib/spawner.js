@@ -71,8 +71,8 @@ setInterval( function() {
 
   setInterval(function() {
     if( body.position.z > ARENA_SIZE/2 ) {
-      scene.remove( model )
       physics.removeBody( body )
+      scene.remove( model )
     }
   }, 20)
 

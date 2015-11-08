@@ -23,7 +23,7 @@ function setupScene() {
 
   var sunLight = new THREE.PointLight( 0x888888 )
   sunLight.name = 'sunlight'
-  sunLight.position.z = 1000
+  sunLight.position.z = 800
 
   var ambientLight = new THREE.AmbientLight( 0xCCCCCC )
 
