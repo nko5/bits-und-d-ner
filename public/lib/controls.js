@@ -1,5 +1,5 @@
-ROTATION_SPEED = 0.1
-THRUSTER_SPEED = 0.5
+ROTATION_SPEED = 0.05
+THRUSTER_SPEED = 0.25
 
 var keyMap = {}
 var rotationMatrix = new THREE.Matrix4()
